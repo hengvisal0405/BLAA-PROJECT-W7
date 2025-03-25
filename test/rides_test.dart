@@ -1,8 +1,9 @@
-import 'package:week_3_blabla_project/model/location/locations.dart';
-import 'package:week_3_blabla_project/model/ride/ride.dart';
-import 'package:week_3_blabla_project/model/ride/ride_pref.dart';
-import 'package:week_3_blabla_project/repository/mock/mock_rides_repository.dart';
-import 'package:week_3_blabla_project/service/rides_service.dart';
+
+import 'package:my_app/model/location/locations.dart';
+import 'package:my_app/model/ride/ride.dart';
+import 'package:my_app/model/ride/ride_pref.dart';
+import 'package:my_app/repository/mock/mock_rides_repository.dart';
+import 'package:my_app/service/rides_service.dart';
 
 void main() {
   // 1 - Create a  ride services
