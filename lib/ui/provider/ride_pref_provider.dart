@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:my_app/ui/provider/async_value.dart';
 import '../../model/ride/ride_pref.dart';
 import '../../data/repository/ride_preferences_repository.dart';
-
-
+//1
+//2
 class RidesPreferencesProvider extends ChangeNotifier {
   RidePreference? _currentPreference;
   final RidePreferencesRepository repository;
@@ -25,6 +25,8 @@ class RidesPreferencesProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  //2nd approach
 
   void addPreference(RidePreference pref) async {
     if (!pastPreferences.data!.contains(pref)) {
