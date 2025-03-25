@@ -1,6 +1,6 @@
 import 'package:my_app/data/dto/location_dto.dart';
 import 'package:my_app/model/ride/ride_pref.dart';
-
+//4
 class RidePreferenceDto {
   static Map<String, dynamic> toJson(RidePreference ridePreference) {
     return {

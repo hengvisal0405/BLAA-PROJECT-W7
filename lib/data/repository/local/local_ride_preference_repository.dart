@@ -4,6 +4,8 @@ import 'package:my_app/model/ride/ride_pref.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dart:convert';
+
+//4
 class LocalRidePreferenceRepository extends RidePreferencesRepository {
   static const String _preferencesKey = "ride_preferences";
 

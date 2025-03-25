@@ -1,6 +1,6 @@
 
 import 'package:my_app/model/location/locations.dart';
-
+//4
 class LocationDto {
   static Map<String, dynamic> toJson(Location model) {
     return {
