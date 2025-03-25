@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/ui/provider/async_value.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/ride/ride_pref.dart';
-import '../../../provider/ride_pref_provider.dart'; // Import the provider
+import '../../provider/ride_pref_provider.dart'; // Import the provider
 import '../../theme/theme.dart';
 
 import '../../../utils/animations_util.dart';
 import '../rides/rides_screen.dart';
 import 'widgets/ride_pref_form.dart';
 import 'widgets/ride_pref_history_tile.dart';
-
-
 const String blablaHomeImagePath = 'assets/images/blabla_home.png';
 
 ///
@@ -26,7 +25,7 @@ class RidePrefScreen extends StatelessWidget {
     // 1 - Update the current preference
     context
         .read<RidesPreferencesProvider>()
-        .setCurrentPreferrence(newPreference);
+        .setCurrentPreference(newPreference);
 
     // 2 - Navigate to the rides screen (with a bottom to top animation)
     await Navigator.of(context)

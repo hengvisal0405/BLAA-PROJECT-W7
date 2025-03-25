@@ -8,10 +8,9 @@ import '../../../widgets/actions/bla_button.dart';
 import '../../../widgets/display/bla_divider.dart';
 import '../../../widgets/inputs/bla_location_picker.dart';
 import 'ride_pref_input_tile.dart';
-
 ///
-/// A Ride Preference Form is a view to select:
-///   - A departure location
+/// A Ride Preference From is a view to select:
+///   - A depcarture location
 ///   - An arrival location
 ///   - A date
 ///   - A number of seats
@@ -48,16 +47,12 @@ class _RidePrefFormState extends State<RidePrefForm> {
     _initializeForm();
   }
 
-  // Overwrite didUpdateWidget to handle updates
   @override
-  void didUpdateWidget(RidePrefForm oldWidget) {
+  void didUpdateWidget(covariant RidePrefForm oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.initialPreference != widget.initialPreference) {
-      _initializeForm();
-    }
+    _initializeForm();
   }
 
-  // Method to initialize form fields
   void _initializeForm() {
     if (widget.initialPreference != null) {
       RidePreference current = widget.initialPreference!;
@@ -66,7 +61,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
       departureDate = current.departureDate;
       requestedSeats = current.requestedSeats;
     } else {
-      // If no given preferences, we select default ones:
+      // If no given preferences, we select default ones :
       departure = null; // User shall select the departure
       departureDate = DateTime.now(); // Now by default
       arrival = null; // User shall select the arrival
@@ -79,12 +74,14 @@ class _RidePrefFormState extends State<RidePrefForm> {
   // ----------------------------------
 
   void onDeparturePressed() async {
+    // 1- Select a location
     Location? selectedLocation = await Navigator.of(context).push<Location>(
       AnimationUtils.createBottomToTopRoute(
         BlaLocationPicker(initLocation: departure),
       ),
     );
 
+    // 2- Update the form if needed
     if (selectedLocation != null) {
       setState(() {
         departure = selectedLocation;
@@ -93,12 +90,14 @@ class _RidePrefFormState extends State<RidePrefForm> {
   }
 
   void onArrivalPressed() async {
+    // 1- Select a location
     Location? selectedLocation = await Navigator.of(context).push<Location>(
       AnimationUtils.createBottomToTopRoute(
         BlaLocationPicker(initLocation: arrival),
       ),
     );
 
+    // 2- Update the form if needed
     if (selectedLocation != null) {
       setState(() {
         arrival = selectedLocation;
@@ -107,11 +106,13 @@ class _RidePrefFormState extends State<RidePrefForm> {
   }
 
   void onSubmit() {
+    // 1- Check input validity
     bool hasDeparture = departure != null;
     bool hasArrival = arrival != null;
     bool isValid = hasDeparture && hasArrival;
 
     if (isValid) {
+      // 2 - Create a new preference
       RidePreference newPreference = RidePreference(
         departure: departure!,
         departureDate: departureDate,
@@ -119,12 +120,14 @@ class _RidePrefFormState extends State<RidePrefForm> {
         requestedSeats: requestedSeats,
       );
 
+      // 3 - Callback with the new preference
       widget.onSubmit(newPreference);
     }
   }
 
   void onSwappingLocationPressed() {
     setState(() {
+      // We switch only if both departure and arrival are defined
       if (departure != null && arrival != null) {
         Location temp = departure!;
         departure = Location.copy(arrival!);
